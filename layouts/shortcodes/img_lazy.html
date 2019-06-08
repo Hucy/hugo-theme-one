@@ -24,8 +24,8 @@ Optional: Use the 'caption' parameter to add an image caption:
   {{ end }}
     <picture>
       <img
-        src="{{ $.Site.Params.cdn }}{{ .Get "src" }}{{$.Site.Params.imgStyle}}"
-        alt="{{ .Get "alt" }}">
+        data-src="{{ $.Site.Params.cdn }}{{ .Get "src" }}{{$.Site.Params.imgStyle}}"
+        alt="{{ .Get "alt" }}"{{ if .Get "caption"}} class="lazy"{{ end }}>
     </picture>
   {{ if .Get "caption"}}
     <figcaption>{{ .Get "caption" }}</figcaption>
