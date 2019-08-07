@@ -7,7 +7,15 @@
   {{ if eq .Type "posts" }}
       <p>
       <aside>{{ .Date.Format "January 2, 2006"}}</aside>
-      <a href="{{ .Permalink }}" style="color:black;">{{ .Title }} <span style="display:block;font-size:0.8rem;color: #262626;margin-top: 0.25rem;">{{slicestr .Summary 0 100}} ...</span></a>{{ if .Draft }} <span style="color:#FF4136;">(unpublished)</span>{{ end }}
+      <a href="{{ .Permalink }}" style="color:black;">{{ .Title }} 
+        <span style="display:block;font-size:0.8rem;color: #262626;margin-top: 0.25rem;">
+          {{ if gt (len .Summary) 100 }}
+          {{slicestr .Summary 0 100}} ...
+          {{ else }}
+          {{ .Summary }} 
+          {{ end }}
+        </span>
+      </a>{{ if .Draft }} <span style="color:#FF4136;">(unpublished)</span>{{ end }}
       </p>
   {{ end }}
   {{ end }}
