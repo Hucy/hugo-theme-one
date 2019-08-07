@@ -9,8 +9,11 @@
     <section>
       <h2>{{ .Key }}</h2>
       <ul>
-        {{ range .Pages }}
+        {{ range .Pages}}
+        {{ $should_show := intersect .Params.tags site.Params.hiddenTags | len | eq 0 }}
+          {{ if $should_show }}
           <li><a href="{{ .Permalink }}" class="permalink">{{ .Title }}</a></li>
+          {{ end }}
         {{ end }}
       </ul>
     </section>
