@@ -5,7 +5,9 @@
 
   {{ with .Site.GetPage "section" "posts" }}
     {{ range .Data.Pages.GroupByDate "2006" }}
-    
+    {{ $pages_len := len .Pages }}
+    {{ $hidden_pages_len := where .Pages ".Params.tags" "intersect" site.Params.hiddenTags | len }}
+    {{if ne $pages_len $hidden_pages_len }}
     <section>
       <h2>{{ .Key }}</h2>
       <ul>
@@ -17,7 +19,7 @@
         {{ end }}
       </ul>
     </section>
-
+    {{end}}
     {{ end }}
   {{ end }}
 
