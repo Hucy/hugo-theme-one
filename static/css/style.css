@@ -148,6 +148,8 @@ table {
 	margin-bottom: 1.5em;
 	border-collapse: collapse;
 	width: 95%;
+	table-layout: fixed;
+	word-break: break-all;
 }
 
 table tr + tr {
