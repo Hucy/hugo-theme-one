@@ -1,0 +1,26 @@
+{{ partial "header.html" . }}
+
+<div class="content single">
+    <h1>{{ .Title }} <aside>{{ range .Params.tags }}<a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}/">{{ . }}</a></a>&nbsp;&nbsp;&nbsp;{{end}}</aside></h1>
+    {{ .Content }}
+</div>
+
+<!-- {{ if (eq .Type "posts") }}
+     <p><small><em>Written on {{ .Date.Format "January 2, 2006"}} </em></small></p>
+     {{ end }} -->
+
+<script>
+ (function (w, d) {
+		 w.addEventListener('LazyLoad::Initialized', function (e) {
+				 w.lazyLoadInstance = e.detail.instance;
+		 }, false);
+		 var b = d.getElementsByTagName('body')[0];
+		 var s = d.createElement("script"); s.async = true;
+		 s.src = "//cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/12.0.0/lazyload.min.js";
+		 w.lazyLoadOptions = {
+         elements_selector: "img[data-src]"
+     };
+		 b.appendChild(s);
+ }(window, document));
+</script>
+{{ partial "footer.html" . }}

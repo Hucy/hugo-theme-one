@@ -211,8 +211,13 @@ a:hover {
 	transition-duration: 0.2s;
 }
 
-p a {
+
+.single h1 ~ * a {
 	color: #0366d6;
+}
+
+.single h1 ~ * a:hover {
+	background: initial;
 }
 
 code {
